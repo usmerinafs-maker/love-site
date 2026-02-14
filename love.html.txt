@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>для моей любимой 💗</title>
+
+<style>
+body{
+    margin:0;
+    font-family: "Comic Sans MS", cursive;
+    background: linear-gradient(180deg,#ffd6e7,#fff0f6);
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* обложка */
+.hero{
+    padding:80px 20px;
+}
+
+h1{
+    font-size:48px;
+    color:#ff4d88;
+}
+
+.subtitle{
+    font-size:22px;
+    color:#555;
+    margin-bottom:30px;
+}
+
+.love-btn{
+    background:#ff4d88;
+    border:none;
+    padding:15px 30px;
+    font-size:20px;
+    color:white;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.love-btn:hover{
+    transform:scale(1.1);
+}
+
+/* сердечки */
+.heart{
+    position:fixed;
+    font-size:24px;
+    animation:fall 4s linear forwards;
+}
+
+@keyframes fall{
+    0%{transform:translateY(-10vh); opacity:1;}
+    100%{transform:translateY(110vh); opacity:0;}
+}
+
+/* записки */
+.notes{
+    padding:60px 20px;
+}
+
+.note-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.note{
+    width:200px;
+    height:140px;
+    background:white;
+    border-radius:20px;
+    padding:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.note:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+.secret{
+    display:none;
+    margin-top:10px;
+    color:#ff4d88;
+}
+
+/* финал */
+.final{
+    padding:80px 20px;
+    font-size:40px;
+    color:#ff4d88;
+}
+
+/* секретное сообщение */
+.big-secret{
+    display:none;
+    margin-top:20px;
+    font-size:24px;
+    color:#ff4d88;
+}
+</style>
+</head>
+
+<body>
+
+<!-- обложка -->
+<section class="hero">
+    <h1>для самой любимой девочки 💗</h1>
+    <div class="subtitle">этот сайт — маленький кусочек моей любви к тебе</div>
+    <button class="love-btn" onclick="hearts()">нажми меня</button>
+</section>
+
+<!-- приветствие -->
+<section>
+    <h2>ты делаешь мою жизнь счастливее</h2>
+    <p>я просто хочу, чтобы ты чаще улыбалась ✨</p>
+</section>
+
+<!-- записки -->
+<section class="notes">
+    <h2>милые записки для тебя 💌</h2>
+
+    <div class="note-grid">
+
+        <div class="note" onclick="toggle(this)">
+            ты делаешь мой мир лучше
+            <div class="secret">и я бесконечно благодарен за тебя 💗</div>
+        </div>
+
+        <div class="note" onclick="toggle(this)">
+            я люблю твою улыбку
+            <div class="secret">она лечит всё внутри меня</div>
+        </div>
+
+        <div class="note" onclick="toggle(this)">
+            спасибо что ты есть
+            <div class="secret">с тобой всё ощущается правильным</div>
+        </div>
+
+        <div class="note" onclick="toggle(this)">
+            ты особенная
+            <div class="secret">и я каждый день влюбляюсь заново</div>
+        </div>
+
+        <div class="note" onclick="toggle(this)">
+            ты моя нежность
+            <div class="secret">моя радость и мой дом</div>
+        </div>
+
+    </div>
+</section>
+
+<!-- сюрприз -->
+<section>
+    <h2>секретный сюрприз 🎁</h2>
+    <button class="love-btn" onclick="showSecret()">открыть секрет</button>
+
+    <div id="bigSecret" class="big-secret">
+        я люблю тебя больше, чем могу описать словами 💗  
+        спасибо, что ты в моей жизни
+    </div>
+</section>
+
+<!-- финал -->
+<section class="final">
+    я тебя люблю 💗
+</section>
+
+<script>
+
+/* падающие сердечки */
+function hearts(){
+    for(let i=0;i<25;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="💗";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(Math.random()*2+3)+"s";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+
+/* открыть записку */
+function toggle(el){
+    let secret=el.querySelector(".secret");
+    secret.style.display=secret.style.display==="block"?"none":"block";
+}
+
+/* большой секрет */
+function showSecret(){
+    document.getElementById("bigSecret").style.display="block";
+    hearts();
+}
+
+</script>
+
+</body>
+</html>
